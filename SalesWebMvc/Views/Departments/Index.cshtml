@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @*<a asp-action="Create">Create New</a>*@
+    <button class="btn btn-success" onclick="location.href='Departments/Create';return false;">Criar Novo</button>
 </p>
 <table class="table">
     <thead>
@@ -19,15 +20,18 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <button class="btn btn-primary btn-sm" onclick="location.href='Departments/Edit/@item.Id';return false;">Editar</button>
+                <button class="btn btn-warning btn-sm" onclick="location.href='Departments/Details/@item.Id';return false;">Details</button>
+                <button class="btn btn-danger btn-sm" onclick="location.href='Departments/Delete/@item.Id';return false;">Delete</button>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
             </td>
         </tr>
 }
